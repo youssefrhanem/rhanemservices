@@ -7,8 +7,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>org.rhanem</groupId>
-    <artifactId>customer</artifactId>
-    <name>Archetype - customer</name>
+    <artifactId>notification</artifactId>
+    <name>Archetype - notification</name>
     <url>http://maven.apache.org</url>
 
 
