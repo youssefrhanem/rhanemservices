@@ -8,7 +8,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>org.rhanem</groupId>
-    <artifactId>clients</artifactId>
-    <name>Archetype - clients</name>
+    <artifactId>amqp</artifactId>
+    <name>Archetype - amqp</name>
     <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+    </dependencies>
 </project>

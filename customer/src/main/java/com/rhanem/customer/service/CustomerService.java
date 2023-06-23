@@ -1,5 +1,6 @@
 package com.rhanem.customer.service;
 
+import com.rhanem.amqp.RabbitMQMessageProducer;
 import com.rhanem.clients.fraud.FraudCheckResponse;
 import com.rhanem.clients.fraud.FraudClient;
 import com.rhanem.clients.notification.NotificationClient;
@@ -19,6 +20,7 @@ public class CustomerService {
     private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
     private final NotificationClient notificationClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
 
     public void registerCustomer(CustomerRegistrationRequest request){
         Customer customer = Customer.builder()
@@ -39,11 +41,24 @@ public class CustomerService {
             throw new IllegalStateException("fraudster");
         }
 
-        notificationClient.sendNotification(
+        NotificationRequest notificationRequest = new NotificationRequest(
+                customer.getId(),
+                customer.getEmail(),
+                String.format("Hi %s, welcome to rhanem...",
+                        customer.getFirstName()));
+
+        /*notificationClient.sendNotification(
                 new NotificationRequest(customer.getId(),
                         customer.getEmail(),
-                        String.format("Hi %s, welcome to rhanem...", customer.getFirstName()))
-        );
-    }
+                        String.format("Hi %s, welcome to rhanem...",
+                                customer.getFirstName()))
+        );*/
 
+        rabbitMQMessageProducer.publish(
+                notificationRequest,
+                "internal.exchange",
+                "internal.notification.routing-key"
+        );
+
+}
 }
