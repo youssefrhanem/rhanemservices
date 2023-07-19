@@ -23,4 +23,6 @@ public class CustomerController {
         log.info("new customer registration {}", customerRegistrationRequest);
         customerService.registerCustomer(customerRegistrationRequest);
     }
+
+    // testests fjgbfdekjh
 }
