@@ -24,5 +24,4 @@ public class CustomerController {
         customerService.registerCustomer(customerRegistrationRequest);
     }
 
-    // testests fjgbfdekjh
 }
