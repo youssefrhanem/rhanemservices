@@ -12,6 +12,41 @@
     <name>Archetype - apigy</name>
     <url>http://maven.apache.org</url>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.rhanem.apigw.ApiGWApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>build-docker-image</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.google.cloud.tools</groupId>
+                        <artifactId>jib-maven-plugin</artifactId>
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <phase>package</phase>-->
+<!--                                <goals>-->
+<!--                                    <goal>build</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -31,4 +66,8 @@
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
         </dependency>
     </dependencies>
+
+
+
+
 </project>

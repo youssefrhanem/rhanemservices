@@ -11,4 +11,7 @@
     <artifactId>clients</artifactId>
     <name>Archetype - clients</name>
     <url>http://maven.apache.org</url>
+
+
+
 </project>
